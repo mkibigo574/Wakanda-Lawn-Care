@@ -37,6 +37,10 @@
   /* Type */
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-sans:  "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  /* Layout */
+  --container: 1100px;
+  --container-pad: 1.25rem;
 }
 
 * { box-sizing: border-box; }
@@ -77,9 +81,9 @@ a:hover { color: var(--green-900); }
   letter-spacing: 0.2px;
 }
 .topbar-inner {
-  max-width: 1200px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem var(--container-pad);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -116,9 +120,9 @@ a:hover { color: var(--green-900); }
   border-bottom: 1px solid var(--line);
 }
 .header-inner {
-  max-width: 1200px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 0.85rem 1.25rem;
+  padding: 0.85rem var(--container-pad);
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -255,9 +259,9 @@ a:hover { color: var(--green-900); }
   pointer-events: none;
 }
 .hero-inner {
-  max-width: 1100px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 6rem 1.25rem 6.5rem;
+  padding: 6rem var(--container-pad) 6.5rem;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -375,7 +379,7 @@ a:hover { color: var(--green-900); }
    Sections / shared
    ========================================================= */
 .section {
-  padding: 5rem 1.25rem;
+  padding: 5rem var(--container-pad);
   scroll-margin-top: 90px;
 }
 .section-light {
@@ -384,18 +388,22 @@ a:hover { color: var(--green-900); }
   border-bottom: 1px solid var(--line-2);
 }
 .section-dark {
-  background: linear-gradient(160deg, var(--green-900), var(--green-950));
-  color: #e8f1ea;
+  background: linear-gradient(160deg, var(--green-950), #03110a);
+  color: #f1f7f2;
 }
 .section-inner {
-  max-width: 1100px;
+  max-width: var(--container);
   margin: 0 auto;
 }
 
 .section-head {
-  max-width: 720px;
   margin: 0 auto 2.5rem;
   text-align: center;
+}
+.section-head .section-intro {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section h2 {
   font-family: var(--font-serif);
@@ -412,7 +420,7 @@ a:hover { color: var(--green-900); }
   font-size: 1.05rem;
   margin: 0;
 }
-.lead-light { color: #cfe1d3; font-size: 1.05rem; }
+.lead-light { color: #f1f7f2; font-size: 1.05rem; }
 
 /* =========================================================
    Why-us / features
@@ -725,13 +733,15 @@ a:hover { color: var(--green-900); }
 .field input[type="time"],
 .field input[type="file"],
 .field textarea {
-  padding: 0.7rem 0.9rem;
+  padding: 0.75rem 0.9rem;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: #fff;
-  font: inherit;
+  font-family: inherit;
+  font-size: 16px; /* prevents iOS Safari zoom on focus */
   color: var(--ink-700);
   width: 100%;
+  min-height: 44px; /* iOS-recommended tap target */
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .field input:focus,
@@ -752,6 +762,11 @@ a:hover { color: var(--green-900); }
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.4rem 1rem;
   margin: 0.4rem 0 1rem;
+}
+.checkbox-group .hint,
+.radio-group .hint {
+  grid-column: 1 / -1;
+  margin: 0 0 0.25rem;
 }
 .group-title {
   display: block;
@@ -782,6 +797,7 @@ a:hover { color: var(--green-900); }
   gap: 1rem 1.5rem;
   padding-top: 0.5rem;
 }
+.submit-row .btn { flex: 0 0 auto; }
 .submit-note {
   margin: 0;
   color: var(--ink-500);
@@ -1001,9 +1017,9 @@ a:hover { color: var(--green-900); }
   color: #cfe1d3;
 }
 .footer-inner {
-  max-width: 1100px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 3rem 1.25rem 2rem;
+  padding: 3rem var(--container-pad) 2rem;
   display: grid;
   grid-template-columns: 1.5fr 2fr;
   gap: 2.5rem;
@@ -1059,4 +1075,79 @@ a:hover { color: var(--green-900); }
 @media (max-width: 720px) {
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
   .footer-cols { grid-template-columns: 1fr 1fr; }
+}
+
+/* =========================================================
+   Mobile (≤ 640px) — primary phone breakpoint
+   ========================================================= */
+@media (max-width: 640px) {
+  /* Tighter vertical rhythm */
+  .section { padding: 3.25rem var(--container-pad); }
+  .hero-inner { padding: 4rem var(--container-pad) 4.5rem; }
+  .section-head { margin-bottom: 1.75rem; }
+
+  /* Topbar — quieter on phones */
+  .topbar { font-size: 0.78rem; }
+  .topbar-inner { padding: 0.45rem 1rem; gap: 0.4rem 0.6rem; }
+
+  /* Header brand subtitle steals space */
+  .brand-tag { display: none; }
+  .brand-name { font-size: 1.1rem; }
+
+  /* Hero CTA — full-width tappable buttons */
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn { justify-content: center; width: 100%; }
+
+  /* Stats card — single column reads better on narrow screens */
+  .stats-card { grid-template-columns: 1fr; gap: 0.75rem; }
+
+  /* Footer cols stack */
+  .footer-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  /* Hours card — less side padding */
+  .hours-card { padding: 1.75rem 1.25rem; }
+
+  /* Booking form — mobile tuning */
+  .quote-form fieldset { padding: 1.25rem 1rem 1rem; }
+  .quote-form legend { font-size: 0.95rem; padding: 0 0.35rem; }
+
+  /* Bigger tap targets for checkbox/radio rows */
+  .checkbox-group, .radio-group {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+  .checkbox-group label, .radio-group label {
+    padding: 0.7rem 0.5rem;
+    min-height: 44px;
+  }
+  .checkbox-group input, .radio-group input {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Submit row — full-width button, note below */
+  .submit-row { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+  .submit-row .btn { width: 100%; justify-content: center; }
+  .submit-note { max-width: none; text-align: center; }
+
+  /* Review banner — let icon + text breathe */
+  .review-banner { padding: 0.9rem 1rem; }
+  .review-banner div { font-size: 0.92rem; }
+
+  /* Success card — stack icon above text */
+  .success-card { flex-direction: column; align-items: flex-start; padding: 1.25rem; }
+}
+
+/* =========================================================
+   Extra small (≤ 420px) — older / smaller phones
+   ========================================================= */
+@media (max-width: 420px) {
+  .section { padding: 2.5rem var(--container-pad); }
+  .hero-inner { padding: 3rem var(--container-pad) 3.5rem; }
+  .topbar-item { font-size: 0.74rem; }
+  .brand-mark { width: 34px; height: 34px; }
+  .brand-name { font-size: 1rem; }
+  .quote-form fieldset { padding: 1rem 0.85rem 0.85rem; }
+  .btn { padding: 0.8rem 1.25rem; font-size: 0.95rem; }
+  .btn-large { padding: 0.95rem 1.5rem; font-size: 1rem; }
 }
