@@ -414,6 +414,7 @@ a:hover { color: var(--green-900); }
   line-height: 1.15;
   letter-spacing: -0.3px;
 }
+.section h2.h2-light,
 .h2-light { color: #fff; }
 .section-intro {
   color: var(--ink-500);
