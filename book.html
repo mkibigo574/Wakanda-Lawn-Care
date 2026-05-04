@@ -78,7 +78,10 @@
         </div>
       </div>
 
-      <form id="booking-form" class="quote-form" action="mailto:wakandalc9@gmail.com" method="post" enctype="text/plain">
+      <form id="booking-form" class="quote-form" action="https://formspree.io/f/mrejpewq" method="post" novalidate>
+        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label>Website <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </div>
 
         <fieldset>
           <legend>1. What service do you need?</legend>
@@ -111,11 +114,7 @@
             <span>Job details <em>(optional but helpful)</em></span>
             <textarea name="details" rows="4" placeholder="Property size, lawn type, gates / access, anything we should know…"></textarea>
           </label>
-          <label class="field">
-            <span>Photos <em>(optional)</em></span>
-            <input type="file" name="photos" accept="image/*" multiple />
-            <small class="hint">Photos help us quote accurately. If your email client doesn't attach them automatically, you can send them later to <a href="mailto:wakandalc9@gmail.com">wakandalc9@gmail.com</a>.</small>
-          </label>
+          <p class="hint">Got photos? Once you submit this request, email them to <a href="mailto:admin@wakandalawncare.com.au">admin@wakandalawncare.com.au</a> and we'll attach them to your file before quoting.</p>
         </fieldset>
 
         <fieldset>
@@ -178,6 +177,8 @@
           </div>
         </fieldset>
 
+        <div id="booking-error" class="form-error" role="alert" hidden></div>
+
         <div class="submit-row">
           <button type="submit" class="btn btn-primary btn-large">Submit Booking Request</button>
           <p class="submit-note">
@@ -196,8 +197,8 @@
             within 24 hours during operating hours to confirm pricing and a time.
           </p>
           <p class="success-fallback">
-            Didn't see your email client open? You can email
-            <a href="mailto:wakandalc9@gmail.com">wakandalc9@gmail.com</a> directly,
+            Got photos to share? Email them to
+            <a href="mailto:admin@wakandalawncare.com.au">admin@wakandalawncare.com.au</a>
             or call <a href="tel:0402654148">0402 654 148</a>.
           </p>
           <p><a href="index.html" class="link-light" style="color:var(--green-900);">&larr; Back to home</a></p>
@@ -224,7 +225,7 @@
       <div>
         <h4>Contact</h4>
         <p><a href="tel:0402654148">0402 654 148</a></p>
-        <p><a href="mailto:wakandalc9@gmail.com">wakandalc9@gmail.com</a></p>
+        <p><a href="mailto:admin@wakandalawncare.com.au">admin@wakandalawncare.com.au</a></p>
         <p>Tue – Fri · 7:30am – 6:30pm</p>
         <p>Sat · 7:30am – 12:00pm</p>
         <p>Sun &amp; Mon · Closed</p>
@@ -258,15 +259,77 @@
     toggle.setAttribute('aria-expanded', 'false');
   }));
 
-  // Booking confirmation message
+  // Booking submission
   const form = document.getElementById('booking-form');
   const success = document.getElementById('booking-success');
+  const errorBox = document.getElementById('booking-error');
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+
   if (form) {
-    form.addEventListener('submit', () => {
-      setTimeout(() => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (errorBox) errorBox.hidden = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.originalText = submitBtn.dataset.originalText || submitBtn.textContent;
+        submitBtn.textContent = 'Sending…';
+      }
+
+      const formData = new FormData(form);
+      const data = {};
+      for (const [key, value] of formData.entries()) {
+        if (value instanceof File) continue;
+        if (data[key] === undefined) {
+          data[key] = value;
+        } else if (Array.isArray(data[key])) {
+          data[key].push(value);
+        } else {
+          data[key] = [data[key], value];
+        }
+      }
+
+      const fullName = `${(data.first_name || '').trim()} ${(data.last_name || '').trim()}`.trim();
+      const services = Array.isArray(data.service) ? data.service.join(', ') : (data.service || '');
+      data._subject = `New booking${fullName ? ` — ${fullName}` : ''}${services ? ` (${services})` : ''}`;
+      if (data.email) data._replyto = data.email;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          const msg = payload && payload.errors && payload.errors[0] && payload.errors[0].message;
+          throw new Error(msg || 'Could not submit your request.');
+        }
+
+        form.hidden = true;
         success.hidden = false;
         success.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 250);
+      } catch (err) {
+        if (errorBox) {
+          errorBox.textContent = (err && err.message)
+            ? err.message
+            : 'Could not submit. Please try again or call 0402 654 148.';
+          errorBox.hidden = false;
+          errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtn.dataset.originalText || 'Submit Booking Request';
+        }
+      }
     });
   }
 </script>

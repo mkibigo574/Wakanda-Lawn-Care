@@ -832,6 +832,18 @@ a:hover { color: var(--green-900); }
 .success-card p { margin: 0.25rem 0; color: var(--ink-700); }
 .success-fallback { font-size: 0.9rem; color: var(--ink-500); }
 
+/* Inline form error (booking submission failure) */
+.form-error {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+  border-radius: var(--radius);
+  color: #7f1d1d;
+  font-size: 0.95rem;
+}
+
 /* =========================================================
    Testimonials
    ========================================================= */
