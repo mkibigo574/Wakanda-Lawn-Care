@@ -72,9 +72,11 @@
         </div>
       </div>
 
-      <form id="booking-form" class="quote-form" action="https://formspree.io/f/mrejpewq" method="post" novalidate>
+      <form id="booking-form" class="quote-form" action="https://api.web3forms.com/submit" method="post" novalidate>
+        <input type="hidden" name="access_key" value="fd4fe503-d14a-40dc-8812-c74b42575900" />
+        <input type="hidden" name="from_name" value="Wakanda Lawn Care booking" />
         <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-          <label>Website <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+          <label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></label>
         </div>
 
         <fieldset>
@@ -304,8 +306,9 @@
 
       const fullName = `${(data.first_name || '').trim()} ${(data.last_name || '').trim()}`.trim();
       const services = Array.isArray(data.service) ? data.service.join(', ') : (data.service || '');
-      data._subject = `New booking${fullName ? ` — ${fullName}` : ''}${services ? ` (${services})` : ''}`;
-      if (data.email) data._replyto = data.email;
+      data.subject = `New booking${fullName ? ` — ${fullName}` : ''}${services ? ` (${services})` : ''}`;
+      if (data.email) data.replyto = data.email;
+      if (Array.isArray(data.service)) data.service = data.service.join(', ');
 
       try {
         const res = await fetch(form.action, {
@@ -317,8 +320,9 @@
           body: JSON.stringify(data),
         });
         const payload = await res.json().catch(() => ({}));
-        if (!res.ok) {
-          const msg = payload && payload.errors && payload.errors[0] && payload.errors[0].message;
+        if (!res.ok || (payload && payload.success === false)) {
+          const msg = (payload && payload.message)
+            || (payload && payload.errors && payload.errors[0] && payload.errors[0].message);
           throw new Error(msg || 'Could not submit your request.');
         }
 
