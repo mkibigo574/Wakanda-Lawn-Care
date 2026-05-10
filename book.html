@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Request a Booking — Wakanda Lawn Care · Darwin, Palmerston &amp; Northern Suburbs</title>
+<meta name="description" content="Request a booking with Wakanda Lawn Care. Every request is personally reviewed within 24 hours during operating hours before it's confirmed." />
+<meta name="theme-color" content="#0d3320" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- Top trust bar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3Zm-1 15-4-4 1.4-1.4L11 14.2l5.6-5.6L18 10l-7 7Z"/></svg> Fully Insured</span>
+    <span class="topbar-sep">·</span>
+    <span class="topbar-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-11a7 7 0 0 1 14 0c0 6.5-7 11-7 11Zm0-9a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg> Local Darwin Operator</span>
+    <span class="topbar-sep">·</span>
+    <a class="topbar-item topbar-link" href="tel:0402654148"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.98.98 0 0 0-1.01.24l-1.57 1.97a15.05 15.05 0 0 1-6.59-6.59l1.97-1.57a1 1 0 0 0 .24-1.01A11.36 11.36 0 0 1 8.96 4.5c0-.55-.45-1-.99-1H4.19c-.54 0-1.19.24-1.19.99C3 14.18 9.82 21 19.51 21c.71 0 .99-.63.99-1.18v-3.43c0-.54-.45-1.01-1-1.01Z"/></svg> 0402 654 148</a>
+    <span class="topbar-sep">·</span>
+    <span class="topbar-item">Tue – Fri · 7:30am – 6:30pm · Sat till 12pm</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html#top" class="brand" aria-label="Wakanda Lawn Care — home">
+      <img src="logo.svg" alt="Wakanda Lawn Care" class="brand-logo" width="800" height="400" />
+    </a>
+
+    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false">
+      <span class="sr-only">Menu</span>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="book.html" class="nav-cta" aria-current="page">Book Now</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#hours">Hours</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Booking form -->
+  <section id="book" class="section">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow eyebrow-dark">Book a job</span>
+        <h2>Request your booking.</h2>
+        <p class="section-intro">
+          Fill in the details below and we'll review your request within 24 hours during
+          operating hours. You can also call <a href="tel:0402654148"><strong>0402 654 148</strong></a>
+          if you'd rather chat.
+        </p>
+      </div>
+
+      <div class="review-banner" role="note">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3Zm-1 15-4-4 1.4-1.4L11 14.2l5.6-5.6L18 10l-7 7Z"/></svg>
+        <div>
+          <strong>All bookings are reviewed before being confirmed.</strong>
+          Submitting this form sends a request — we'll personally review it and contact
+          you to confirm scheduling and pricing before any work starts.
+        </div>
+      </div>
+
+      <form id="booking-form" class="quote-form" action="https://api.web3forms.com/submit" method="post" novalidate>
+        <input type="hidden" name="access_key" value="fd4fe503-d14a-40dc-8812-c74b42575900" />
+        <input type="hidden" name="from_name" value="Wakanda Lawn Care booking" />
+        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+          <label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <fieldset>
+          <legend>1. What service do you need?</legend>
+          <p class="hint">Tick everything that applies — you can pick more than one.</p>
+
+          <div class="checkbox-group">
+            <strong class="group-title">Lawn Maintenance</strong>
+            <p class="hint">Mowing and hedging always come together as one service.</p>
+            <label><input type="checkbox" name="service" value="Regular Mowing &amp; Hedging" /> <span>Regular mowing &amp; hedging</span></label>
+            <label><input type="checkbox" name="service" value="One Time Mowing &amp; Hedging" /> <span>One-off mowing &amp; hedging</span></label>
+            <label><input type="checkbox" name="service" value="Lawn Edging" /> <span>Lawn edging</span></label>
+            <label><input type="checkbox" name="service" value="Lawn Repair" /> <span>Lawn repair</span></label>
+            <label><input type="checkbox" name="service" value="Lawn Fertilising" /> <span>Lawn fertilising</span></label>
+          </div>
+
+          <div class="checkbox-group">
+            <strong class="group-title">Gardening</strong>
+            <label><input type="checkbox" name="service" value="Plant Pruning" /> <span>Plant pruning</span></label>
+            <label><input type="checkbox" name="service" value="Garden Cleanup" /> <span>Garden cleanup / tidy up</span></label>
+            <label><input type="checkbox" name="service" value="End of Lease Cleanup" /> <span>End-of-lease clean-up</span></label>
+            <label><input type="checkbox" name="service" value="Weed Control" /> <span>Weed control</span></label>
+            <label><input type="checkbox" name="service" value="Mulching" /> <span>Mulching</span></label>
+            <label><input type="checkbox" name="service" value="Garden Waste Removal" /> <span>Garden waste removal</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Tell us about the job</legend>
+          <label class="field">
+            <span>Job details <em>(optional but helpful)</em></span>
+            <textarea name="details" rows="4" placeholder="Property size, lawn type, gates / access, anything we should know…"></textarea>
+          </label>
+          <label class="field">
+            <span>Attach photos <em>(optional)</em></span>
+            <input type="file" name="attachment" accept="image/*" multiple />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Where's the job?</legend>
+          <label class="field">
+            <span>Street address</span>
+            <input type="text" name="address" placeholder="e.g. 12 Smith St" />
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span>Suburb</span>
+              <input type="text" name="suburb" />
+            </label>
+            <label class="field">
+              <span>Postcode</span>
+              <input type="text" name="postcode" inputmode="numeric" pattern="[0-9]*" />
+            </label>
+          </div>
+          <div class="radio-group">
+            <strong class="group-title">Property type</strong>
+            <label><input type="radio" name="property_type" value="Residential" /> <span>Residential</span></label>
+            <label><input type="radio" name="property_type" value="Commercial" /> <span>Commercial</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Your contact details</legend>
+          <div class="field-row">
+            <label class="field">
+              <span>First name</span>
+              <input type="text" name="first_name" required />
+            </label>
+            <label class="field">
+              <span>Last name</span>
+              <input type="text" name="last_name" required />
+            </label>
+          </div>
+          <label class="field">
+            <span>Email</span>
+            <input type="email" name="email" required />
+          </label>
+          <label class="field">
+            <span>Mobile</span>
+            <input type="tel" name="phone" required />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>5. When suits you?</legend>
+          <p class="hint">This is your <em>preferred</em> time. We'll confirm an exact slot when we review your request.</p>
+          <div class="field-row">
+            <label class="field">
+              <span>Preferred date</span>
+              <input type="date" name="service_date" />
+            </label>
+            <label class="field">
+              <span>Preferred time</span>
+              <input type="time" name="service_time" />
+            </label>
+          </div>
+        </fieldset>
+
+        <div id="booking-error" class="form-error" role="alert" hidden></div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary btn-large">Submit Booking Request</button>
+          <p class="submit-note">
+            By submitting, you're sending a <strong>request</strong> — not a confirmed booking.
+            We'll review it and get back to you within 24 hours during operating hours.
+          </p>
+        </div>
+      </form>
+
+      <div id="booking-success" class="success-card" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1 15-5-5 1.4-1.4L11 14.2l6.6-6.6L19 9l-8 8Z"/></svg>
+        <div>
+          <h3>Request received — we'll be in touch.</h3>
+          <p>
+            Thanks for reaching out. James will personally review your request and contact you
+            within 24 hours during operating hours to confirm pricing and a time.
+          </p>
+          <p class="success-fallback">
+            Got photos to share? Email them to
+            <a href="mailto:admin@wakandalawncare.com.au">admin@wakandalawncare.com.au</a>
+            or call <a href="tel:0402654148">0402 654 148</a>.
+          </p>
+          <p><a href="index.html" class="link-light" style="color:var(--green-900);">&larr; Back to home</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo.svg" alt="Wakanda Lawn Care" class="footer-logo" width="800" height="400" />
+      <div>
+        <span>Premium lawn &amp; garden care across Darwin, Palmerston &amp; the Northern Suburbs.</span>
+      </div>
+    </div>
+
+    <div class="footer-cols">
+      <div>
+        <h4>Contact</h4>
+        <p><a href="tel:0402654148">0402 654 148</a></p>
+        <p><a href="mailto:admin@wakandalawncare.com.au">admin@wakandalawncare.com.au</a></p>
+        <p>Tue – Fri · 7:30am – 6:30pm</p>
+        <p>Sat · 7:30am – 12:00pm</p>
+        <p>Sun &amp; Mon · Closed</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <p><a href="index.html#services">Services</a></p>
+        <p><a href="index.html#how-it-works">How it works</a></p>
+        <p><a href="book.html">Book now</a></p>
+        <p><a href="index.html#faq">FAQ</a></p>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <ul class="social-links">
+          <li>
+            <a href="https://www.instagram.com/wakanda_lawn_care?igsh=MWJjNXZlNXc3aDA1Ng%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Wakanda Lawn Care on Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.07 1.18.05 1.97.24 2.66.51.71.28 1.31.65 1.9 1.24.59.59.96 1.19 1.24 1.9.27.69.46 1.48.51 2.66.06 1.2.07 1.6.07 4.8s0 3.6-.07 4.8c-.05 1.18-.24 1.97-.51 2.66-.28.71-.65 1.31-1.24 1.9-.59.59-1.19.96-1.9 1.24-.69.27-1.48.46-2.66.51-1.2.06-1.6.07-4.8.07s-3.6 0-4.8-.07c-1.18-.05-1.97-.24-2.66-.51a5.27 5.27 0 0 1-1.9-1.24 5.27 5.27 0 0 1-1.24-1.9c-.27-.69-.46-1.48-.51-2.66C2.21 15.6 2.2 15.2 2.2 12s0-3.6.07-4.8c.05-1.18.24-1.97.51-2.66.28-.71.65-1.31 1.24-1.9.59-.59 1.19-.96 1.9-1.24.69-.27 1.48-.46 2.66-.51C8.4 2.21 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.52.01-4.76.07-.99.04-1.53.21-1.89.35-.47.18-.81.4-1.16.75-.35.35-.57.69-.75 1.16-.14.36-.31.9-.35 1.89-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.99.21 1.53.35 1.89.18.47.4.81.75 1.16.35.35.69.57 1.16.75.36.14.9.31 1.89.35 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.99-.04 1.53-.21 1.89-.35.47-.18.81-.4 1.16-.75.35-.35.57-.69.75-1.16.14-.36.31-.9.35-1.89.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.99-.21-1.53-.35-1.89a3.13 3.13 0 0 0-.75-1.16 3.13 3.13 0 0 0-1.16-.75c-.36-.14-.9-.31-1.89-.35C15.52 4.01 15.15 4 12 4Zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88Zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28Zm5.14-2.04a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z"/></svg>
+              <span>Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/share/1BdxPHFhfA/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Wakanda Lawn Care on Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>
+              <span>Facebook</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Wakanda Lawn Care. Family-owned and operated. Fully insured &middot; Darwin NT.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Booking submission
+  const form = document.getElementById('booking-form');
+  const success = document.getElementById('booking-success');
+  const errorBox = document.getElementById('booking-error');
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (errorBox) errorBox.hidden = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.dataset.originalText = submitBtn.dataset.originalText || submitBtn.textContent;
+        submitBtn.textContent = 'Sending…';
+      }
+
+      const formData = new FormData(form);
+      const fullName = `${(formData.get('first_name') || '').trim()} ${(formData.get('last_name') || '').trim()}`.trim();
+      const services = formData.getAll('service').join(', ');
+      formData.append('subject', `New booking${fullName ? ` — ${fullName}` : ''}${services ? ` (${services})` : ''}`);
+      if (formData.get('email')) formData.append('replyto', formData.get('email'));
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+        });
+        const payload = await res.json().catch(() => ({}));
+        if (!res.ok || (payload && payload.success === false)) {
+          const msg = (payload && payload.message)
+            || (payload && payload.errors && payload.errors[0] && payload.errors[0].message);
+          throw new Error(msg || 'Could not submit your request.');
+        }
+
+        form.hidden = true;
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch (err) {
+        if (errorBox) {
+          errorBox.textContent = (err && err.message)
+            ? err.message
+            : 'Could not submit. Please try again or call 0402 654 148.';
+          errorBox.hidden = false;
+          errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitBtn.dataset.originalText || 'Submit Booking Request';
+        }
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
