@@ -110,10 +110,7 @@
             <span>Job details <em>(optional but helpful)</em></span>
             <textarea name="details" rows="4" placeholder="Property size, lawn type, gates / access, anything we should know…"></textarea>
           </label>
-          <label class="field">
-            <span>Attach photos <em>(optional)</em></span>
-            <input type="file" name="attachment" accept="image/*" multiple />
-          </label>
+          <p class="hint">Got photos? Once you submit this request, email them to <a href="mailto:admin@wakandalawncare.com.au">admin@wakandalawncare.com.au</a> and we'll attach them to your file before quoting.</p>
         </fieldset>
 
         <fieldset>
@@ -253,7 +250,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2026 Wakanda Lawn Care. Family-owned and operated. Fully insured &middot; Darwin NT.</p>
+    <p>&copy; <span id="year"></span> Wakanda Lawn Care. Family-owned · Fully insured · Darwin NT.</p>
   </div>
 </footer>
 
@@ -295,15 +292,32 @@
       }
 
       const formData = new FormData(form);
-      const fullName = `${(formData.get('first_name') || '').trim()} ${(formData.get('last_name') || '').trim()}`.trim();
-      const services = formData.getAll('service').join(', ');
-      formData.append('subject', `New booking${fullName ? ` — ${fullName}` : ''}${services ? ` (${services})` : ''}`);
-      if (formData.get('email')) formData.append('replyto', formData.get('email'));
+      const data = {};
+      for (const [key, value] of formData.entries()) {
+        if (value instanceof File) continue;
+        if (data[key] === undefined) {
+          data[key] = value;
+        } else if (Array.isArray(data[key])) {
+          data[key].push(value);
+        } else {
+          data[key] = [data[key], value];
+        }
+      }
+
+      const fullName = `${(data.first_name || '').trim()} ${(data.last_name || '').trim()}`.trim();
+      const services = Array.isArray(data.service) ? data.service.join(', ') : (data.service || '');
+      data.subject = `New booking${fullName ? ` — ${fullName}` : ''}${services ? ` (${services})` : ''}`;
+      if (data.email) data.replyto = data.email;
+      if (Array.isArray(data.service)) data.service = data.service.join(', ');
 
       try {
         const res = await fetch(form.action, {
           method: 'POST',
-          body: formData,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify(data),
         });
         const payload = await res.json().catch(() => ({}));
         if (!res.ok || (payload && payload.success === false)) {
