@@ -72,9 +72,7 @@
         </div>
       </div>
 
-      <form id="booking-form" class="quote-form" action="https://api.web3forms.com/submit" method="post" enctype="multipart/form-data" novalidate>
-        <input type="hidden" name="access_key" value="fd4fe503-d14a-40dc-8812-c74b42575900" />
-        <input type="hidden" name="from_name" value="Wakanda Lawn Care booking" />
+      <form id="booking-form" class="quote-form" action="/api/book" method="post" enctype="multipart/form-data" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
           <label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></label>
         </div>
@@ -162,7 +160,7 @@
           <legend>5. Attach photos (optional)</legend>
           <p class="hint">
             Attach up to 5 photos of your lawn or garden so we can give you a more accurate quote.
-            Accepted formats: JPG, PNG, WEBP (max 10MB each).
+            Accepted formats: JPG, PNG, WEBP (max 3MB each).
           </p>
           <label for="photos" class="field">
             <span>Choose photos</span>

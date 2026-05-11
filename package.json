@@ -1,0 +1,10 @@
+{
+  "name": "wakanda-lawn-care",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "resend": "^4.0.0"
+  }
+}
