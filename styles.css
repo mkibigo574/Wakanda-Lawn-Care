@@ -2,6 +2,10 @@
    Wakanda Lawn Care — premium styling
    ========================================================= */
 
+[hidden] {
+  display: none !important;
+}
+
 :root {
   /* Greens */
   --green-950: #061a0e;
