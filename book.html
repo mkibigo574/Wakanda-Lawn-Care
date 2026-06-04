@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -75,6 +76,7 @@
       <form id="booking-form" class="quote-form" action="/api/book" method="post" enctype="multipart/form-data" novalidate>
         <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
           <label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" /></label>
+          <label>Company website <input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
         </div>
 
         <fieldset>
@@ -183,6 +185,9 @@
             </label>
           </div>
         </fieldset>
+
+        <!-- Cloudflare Turnstile: replace data-sitekey with your real site key (it is public/safe to commit). -->
+        <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="light" style="margin:8px 0 4px;"></div>
 
         <div id="booking-error" class="form-error" role="alert" hidden></div>
 

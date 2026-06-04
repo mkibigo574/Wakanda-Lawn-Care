@@ -74,6 +74,10 @@ if (form) {
           submitBtn.disabled = false;
           submitBtn.textContent = submitBtn.dataset.originalText || 'Submit Booking Request';
         }
+        // Turnstile tokens are single-use — reset the widget so the user can retry.
+        if (window.turnstile && typeof window.turnstile.reset === 'function') {
+          window.turnstile.reset();
+        }
       });
   });
 }
